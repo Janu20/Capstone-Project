@@ -11,11 +11,9 @@
 - [Features](#features)  
 - [Tech Stack](#tech-stack)  
 - [Prerequisites](#prerequisites)  
-- [Setup & Installation](#setup--installation)  
 - [Usage](#usage)  
-- [Project Structure](#project-structure)  
-- [Database Schema](#database-schema)  
-- [Deployment](#deployment)  
+  
+
 
 ---
 
@@ -54,62 +52,21 @@ This project is a straightforward Online Book Library System implemented in ASP.
 
 ---
 
-##  Setup & Installation
 
-```bash
-git clone https://github.com/yourusername/OnlineBookLibrarySystem.git
-cd OnlineBookLibrarySystem
-dotnet restore
-# Update `appsettings.json` with your SQL Server connection string
-dotnet ef database update
-dotnet run
+## Usage
 
-##Usage
-
-Navigate to /Books.
-
-Click Create New to add books.
-
-Use Edit or Details for book-specific actions.
-
-Use Delete for removing entries (confirmation required).
-
-##Project Structure
-
-OnlineBookLibrarySystem/
-├── Controllers/
-│   └── BooksController.cs
-├── Models/
-│   └── Book.cs
-├── Data/
-│   └── ApplicationDbContext.cs
-├── Views/
-│   └── Books/ (Index, Create, Edit, Details, Delete)
-├── appsettings.json
-└── README.md
-
-##Database Schema
-
-| Column        | Type   | Description         |
-| ------------- | ------ | ------------------- |
-| Id            | int    | Primary Key         |
-| Title         | string | Book title          |
-| Author        | string | Author's name       |
-| Genre         | string | Genre/category      |
-| PublishedYear | int    | Year published      |
-| IsAvailable   | bool   | Availability status |
+1. Navigate to `/Books`.
+2. Click **Create New** to add a book.
+3. To view or edit a specific book, use the **Edit** or **Details** actions.
+4. To remove a book, click **Delete** (a confirmation prompt will appear).
+5. Use the search box at the top to filter books by title (type a keyword and click Search).
 
 
-##Deployment
 
--->  Set up an Azure App Service and Azure SQL instance
 
---> Update ConnectionStrings:DefaultConnection in appsettings.json
 
---> Publish via Visual Studio or dotnet publish
 
---> Apply EF Core migrations (dotnet ef database update)
 
---> Visit your live URL
+
 
 
