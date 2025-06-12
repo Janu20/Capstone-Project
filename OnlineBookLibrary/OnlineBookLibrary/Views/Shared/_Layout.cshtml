@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - OnlineBookLibrary</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 56px;
+            background: linear-gradient(90deg, #1e3c72, #2a5298);
+            color: white;
+            display: flex;
+            align-items: center;
+            padding-left: 20px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            z-index: 1000;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 56px;
+            left: 0;
+            width: 200px;
+            height: calc(100% - 56px);
+            background-color: #f8f9fa;
+            padding-top: 20px;
+            border-right: 1px solid #ccc;
+        }
+
+            .sidebar .nav-link {
+                color: #333;
+                padding: 12px 20px;
+                font-weight: 500;
+                transition: all 0.3s ease;
+            }
+
+                .sidebar .nav-link:hover,
+                .sidebar .nav-link.active {
+                    background-color: #e9ecef;
+                    border-radius: 4px;
+                    color: #1e3c72;
+                    ;
+                }
+
+        .main-content {
+            margin-top: 56px;
+            margin-left: 200px;
+            padding: 30px;
+            background-color: #fdfdfd;
+            min-height: calc(100vh - 96px);
+        }
+
+        footer {
+            background-color: #f1f1f1;
+            padding: 15px 0;
+            text-align: center;
+            margin-top: auto;
+            font-size: 0.9rem;
+        }
+
+        @@media (max-width: 768px) {
+            .sidebar
+
+        {
+            position: relative;
+            width: 100%;
+            height: auto;
+            top: 0;
+            border-right: none;
+        }
+
+        .main-content {
+            margin-left: 0;
+        }
+
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        📚 Online Book Library System
+    </div>
+
+    <nav class="sidebar">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Home" asp-action="Index">🏠 Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Books" asp-action="Index">📖 Books</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="About" asp-action="Index">ℹ️ About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Contact" asp-action="Index">📬 Contact Us</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        @RenderBody()
+    </main>
+
+    <footer>
+        &copy; 2025 - Online Book Library - <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </footer>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

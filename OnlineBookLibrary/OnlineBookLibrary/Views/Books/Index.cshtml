@@ -1,0 +1,237 @@
+﻿@model IEnumerable<OnlineBookLibrary.Models.Book>
+
+@{
+    ViewData["Title"] = "Library Books";
+}
+
+<style>
+    .page-header {
+        margin-bottom: 30px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+        .page-header h1 {
+            font-weight: 700;
+            color: #1e3c72; /* match gradient topbar theme */
+            font-size: 2.25rem;
+        }
+
+    .btn i {
+        margin-right: 6px;
+        vertical-align: middle;
+    }
+
+    .table-container {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+        padding: 20px;
+        overflow-x: auto;
+    }
+
+    table.table {
+        min-width: 700px;
+        border-collapse: separate;
+        border-spacing: 0 0.75rem;
+        font-size: 1rem;
+        color: #444;
+    }
+
+    thead.table-dark {
+        background-color: #1e3c72;
+        color: #fff;
+        border-radius: 12px;
+    }
+
+    thead th {
+        font-weight: 600;
+        border: none;
+        padding: 12px 20px;
+    }
+
+    tbody tr {
+        background-color: #fefefe;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+        border-radius: 8px;
+    }
+
+        tbody tr:hover {
+            background-color: #f1f9ff;
+            box-shadow: 0 4px 12px rgba(30, 60, 114, 0.15); /* match gradient */
+        }
+
+    tbody td {
+        padding: 14px 20px;
+        vertical-align: middle;
+        border-top: none;
+        border-bottom: none;
+    }
+
+    .d-flex.gap-1 > a.btn {
+        flex: 1;
+        font-size: 0.9rem;
+        padding: 6px 12px;
+        border-radius: 6px;
+        transition: transform 0.15s ease;
+    }
+
+        .d-flex.gap-1 > a.btn:hover {
+            transform: scale(1.05);
+        }
+
+    .badge-yes {
+        background-color: #198754;
+        padding: 5px 12px;
+        font-size: 0.85rem;
+        border-radius: 20px;
+        font-weight: 600;
+    }
+
+    .badge-no {
+        background-color: #6c757d;
+        padding: 5px 12px;
+        font-size: 0.85rem;
+        border-radius: 20px;
+        font-weight: 600;
+    }
+
+    .alert-info {
+        background-color: #e7f1ff;
+        border-color: #b6d4fe;
+        color: #084298;
+        font-size: 1rem;
+        border-radius: 10px;
+        padding: 15px 25px;
+        margin-bottom: 30px;
+        font-weight: 500;
+    }
+
+    .search-bar {
+        max-width: 350px;
+        margin-bottom: 20px;
+    }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px 15px;
+            border-radius: 25px;
+            border: 1.5px solid #ced4da;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+            .search-bar input:focus {
+                border-color: #2a5298;
+                outline: none;
+                box-shadow: 0 0 8px rgba(42, 82, 152, 0.3);
+            }
+
+    @@media (max-width: 768px) {
+        .page-header h1
+
+    {
+        font-size: 2rem;
+    }
+
+    .d-flex.gap-1 > a.btn {
+        font-size: 0.8rem;
+        padding: 5px 8px;
+    }
+
+    table.table {
+        min-width: 100%;
+        font-size: 0.9rem;
+    }
+
+    }
+</style>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center page-header flex-wrap gap-3">
+        <h1>@ViewData["Title"]</h1>
+        <a asp-action="Create" class="btn btn-success">
+            <i class="bi bi-plus-lg"></i> Add New Book
+        </a>
+    </div>
+
+    <div class="search-bar">
+        <input type="search" id="bookSearch" placeholder="Search books by title, author, or genre..." onkeyup="filterBooks()" aria-label="Search Books" />
+    </div>
+
+    <div class="alert alert-info">
+        Use the options on each book to view, edit, or delete entries. This system is built for easy book management.
+    </div>
+
+    <div class="table-container">
+        <table class="table table-bordered table-hover" id="booksTable" aria-describedby="booksTableInfo" role="grid">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Genre</th>
+                    <th scope="col">Year</th>
+                    <th scope="col">Available</th>
+                    <th scope="col" style="width: 180px;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var book in Model)
+                {
+                    <tr>
+                        <td>@book.Title</td>
+                        <td>@book.Author</td>
+                        <td>@book.Genre</td>
+                        <td>@book.PublishedYear</td>
+                        <td>
+                            @if (book.IsAvailable)
+                            {
+                                <span class="badge badge-yes text-white">Yes</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-no text-white">No</span>
+                            }
+                        </td>
+                        <td>
+                            <div class="d-flex gap-1">
+                                <a asp-action="Details" asp-route-id="@book.Id" class="btn btn-sm btn-info" aria-label="View @book.Title details">
+                                    <i class="bi bi-eye"></i> View
+                                </a>
+                                <a asp-action="Edit" asp-route-id="@book.Id" class="btn btn-sm btn-warning" aria-label="Edit @book.Title">
+                                    <i class="bi bi-pencil"></i> Edit
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@book.Id" class="btn btn-sm btn-danger" aria-label="Delete @book.Title">
+                                    <i class="bi bi-trash"></i> Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function filterBooks() {
+        const input = document.getElementById('bookSearch');
+        const filter = input.value.toLowerCase();
+        const table = document.getElementById('booksTable');
+        const trs = table.tBodies[0].getElementsByTagName('tr');
+
+        for (let i = 0; i < trs.length; i++) {
+            const row = trs[i];
+            const title = row.cells[0].textContent.toLowerCase();
+            const author = row.cells[1].textContent.toLowerCase();
+            const genre = row.cells[2].textContent.toLowerCase();
+
+            if (title.includes(filter) || author.includes(filter) || genre.includes(filter)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        }
+    }
+</script>

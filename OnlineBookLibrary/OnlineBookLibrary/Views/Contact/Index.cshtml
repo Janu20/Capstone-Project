@@ -1,0 +1,175 @@
+﻿@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<style>
+    /* Background hero with subtle dark overlay */
+    .contact-hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1500&q=80') no-repeat center center / cover;
+        height: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        font-size: 2.8rem;
+        font-weight: 700;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        letter-spacing: 1.2px;
+    }
+
+    /* Container padding and font styling */
+    .contact-section {
+        padding: 60px 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        max-width: 1100px;
+        margin: auto;
+    }
+
+    /* Contact info styling */
+    .contact-info {
+        background-color: #f8f9fa;
+        padding: 35px 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        margin-bottom: 40px;
+    }
+
+        .contact-info h5 {
+            color: #003B73;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        .contact-info a {
+            color: #212529;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+            .contact-info a:hover {
+                color: #003B73;
+                text-decoration: underline;
+            }
+
+    /* Extra content styling */
+    .extras {
+        background-color: #ffffff;
+        padding: 35px 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+        .extras h4 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+        }
+
+        .extras ul {
+            padding-left: 20px;
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+            .extras ul li {
+                margin-bottom: 12px;
+            }
+
+    /* Responsive map */
+    .map-responsive {
+        overflow: hidden;
+        padding-bottom: 56.25%;
+        position: relative;
+        height: 0;
+        margin-top: 50px;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+        .map-responsive iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: 12px;
+        }
+
+    /* Responsive grid on larger screens */
+    @@media(min - width: 768px)
+
+    {
+        .row
+
+    {
+        display: flex;
+        gap: 30px;
+    }
+
+    .col-md-5 {
+        flex: 0 0 40%;
+    }
+
+    .col-md-7 {
+        flex: 0 0 60%;
+    }
+
+    }
+</style>
+
+<!-- Hero -->
+<div class="contact-hero">
+    Get in Touch With Us
+</div>
+
+<!-- Contact Section -->
+<div class="container contact-section">
+    <div class="row">
+        <!-- Contact Info -->
+        <div class="col-md-5 contact-info">
+            <h5>📧 Email Us</h5>
+            <p><a href="mailto:gjanani2082@gmail.com">gjanani2082@gmail.com</a></p>
+
+            <h5>📞 Call Us</h5>
+            <p><a href="tel:+917397330875">+91 73973 30875</a></p>
+
+            <h5>📍 Address</h5>
+            <p>Online Book Library HQ<br />Chennai, Tamil Nadu, India</p>
+
+            <h5>🕒 Support Hours</h5>
+            <p>Monday - Saturday: 9:00 AM to 6:00 PM<br />Sunday: Closed</p>
+        </div>
+
+        <!-- Extra Content -->
+        <div class="col-md-7 extras">
+            <h4>How Can We Help You?</h4>
+            <p>
+                Whether you need assistance finding a book, managing your account, or have suggestions to improve the library, we're here to help! Reach out to us through the contact info provided above, and we’ll respond within 24 hours on business days.
+            </p>
+
+            <h4>Frequently Asked Questions</h4>
+            <ul>
+              
+                <li><strong>How can I contribute to the library?</strong> — We welcome contributions! Contact us via email to discuss further.</li>
+                <li><strong>Is the service free?</strong> — Yes, Online Book Library is completely free to use for all readers.</li>
+      
+                <li><strong>Is there a mobile app?</strong> — Our site is fully responsive and works great on any device. A dedicated app is coming soon!</li>
+            </ul>
+
+            <h4 class="mt-4">Stay Connected</h4>
+            <p>
+                We’re always here to help! For updates, announcements, or to share your feedback, simply reach out via email or phone.<br /><br />
+                Check back regularly on the homepage for news and new features in the library.
+            </p>
+        </div>
+    </div>
+
+    <!-- Map -->
+    <div class="map-responsive">
+        <iframe src="https://maps.google.com/maps?q=chennai&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen loading="lazy"></iframe>
+    </div>
+</div>

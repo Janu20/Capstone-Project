@@ -1,0 +1,169 @@
+﻿@{
+    ViewData["Title"] = "About Us";
+}
+
+<style>
+    .hero {
+        background: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1500&q=80') no-repeat center center;
+        background-size: cover;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        position: relative;
+    }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .hero h1 {
+            z-index: 1;
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-align: center;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        }
+
+    .about-container {
+        max-width: 1200px;
+        margin: 60px auto;
+        padding: 0 20px;
+        font-family: 'Segoe UI', sans-serif;
+        color: #2d2d2d;
+    }
+
+        .about-container h2 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            color: #003B73; 
+            font-weight: 700;
+            border-bottom: 2px solid #003B73;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .about-container p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 30px;
+        }
+
+    .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .feature {
+        background: #ffffff;
+        border-radius: 12px;
+        border: 1px solid #dee2e6;
+        padding: 25px 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+        .feature:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature strong {
+            display: block;
+            font-size: 1.25rem;
+            color: #212529;
+            margin-bottom: 10px;
+        }
+
+    .team {
+        margin-top: 60px;
+        background: #f8f9fa;
+        padding: 40px 30px;
+        border-radius: 12px;
+        border: 1px solid #dee2e6;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    }
+
+        .team h3 {
+            font-size: 1.75rem;
+            color: #003B73; /* Same as above */
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .team p {
+            font-size: 1.05rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+   @@media (max-width: 768px) {
+        .hero h1
+
+    {
+        font-size: 2.2rem;
+        padding: 0 10px;
+    }
+
+    .about-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .feature strong {
+        font-size: 1.1rem;
+    }
+
+    }
+</style>
+
+<!-- Hero Section -->
+<div class="hero">
+    <h1>About Online Book Library</h1>
+</div>
+
+<!-- Main Content -->
+<div class="about-container">
+    <h2>Our Story</h2>
+    <p>
+        Founded in 2025 by a team of tech-savvy book lovers, Online Book Library was built to simplify the way people discover, access, and manage books online. What started as a side project has grown into a user-friendly digital platform designed to empower readers of all backgrounds.
+    </p>
+
+    <h2>Our Mission</h2>
+    <p>
+        We believe that books should be accessible to everyone — anytime, anywhere. Our mission is to provide a clean, intuitive, and responsive online environment where reading meets technology, with zero barriers and maximum convenience.
+    </p>
+
+    <h2>Core Features</h2>
+    <div class="features">
+        <div class="feature">
+            <strong>📚 Book Management</strong>
+            Organize your collection seamlessly — add, update, and delete books with ease.
+        </div>
+        <div class="feature">
+            <strong>🔍 Smart Search</strong>
+            Search by title, author, genre, or year — results update in real-time.
+        </div>
+        <div class="feature">
+            <strong>📱 Fully Responsive</strong>
+            Whether on mobile, tablet, or desktop, the library adapts beautifully to your screen.
+        </div>
+        
+    </div>
+
+    <div class="team">
+        <h3>Meet the Team</h3>
+        <p>
+            We’re a collaborative group of developers, designers, and avid readers who believe in the transformative power of books. With a commitment to constant improvement and community feedback, we're dedicated to making Online Book Library a better experience for all.
+        </p>
+    </div>
+</div>
